@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingguatang.product.dao.CategoryDAO">
+  <resultMap id="BaseResultMap" type="com.qingguatang.product.dataobject.CategoryDO">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="media_id" jdbcType="VARCHAR" property="mediaId" />
+    <result column=" parent_category_id" jdbcType="VARCHAR" property="parentCategoryId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from category
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qingguatang.product.dataobject.CategoryDO">
+    insert into category (id, name, gmt_created, 
+      gmt_modified, status, media_id, 
+      " parent_category_id")
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{gmtCreated,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, #{mediaId,jdbcType=VARCHAR}, 
+      #{parentCategoryId,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.qingguatang.product.dataobject.CategoryDO">
+    update category
+    set name = #{name,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      media_id = #{mediaId,jdbcType=VARCHAR},
+      " parent_category_id" = #{parentCategoryId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, name, gmt_created, gmt_modified, status, media_id, " parent_category_id"
+    from category
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, gmt_created, gmt_modified, status, media_id, " parent_category_id"
+    from category
+  </select>
+  <resultMap id="BaseResultMap" type="com.qingguatang.product.dataobject.CategoryDAODO">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="media_id" jdbcType="VARCHAR" property="mediaId" />
+    <result column=" parent_category_id" jdbcType="VARCHAR" property="parentCategoryId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from category
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.qingguatang.product.dataobject.CategoryDAODO">
+    insert into category (id, name, gmt_created, 
+      gmt_modified, status, media_id, 
+      " parent_category_id")
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{gmtCreated,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, #{mediaId,jdbcType=VARCHAR}, 
+      #{parentCategoryId,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.qingguatang.product.dataobject.CategoryDAODO">
+    update category
+    set name = #{name,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      media_id = #{mediaId,jdbcType=VARCHAR},
+      " parent_category_id" = #{parentCategoryId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, name, gmt_created, gmt_modified, status, media_id, " parent_category_id"
+    from category
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, gmt_created, gmt_modified, status, media_id, " parent_category_id"
+    from category
+  </select>
+
+
+  <select id="query" parameterType="com.qingguatang.product.param.CategoryQueryParam">
+    select id, name, gmt_created, gmt_modified, status, media_id, " parent_category_id"
+    from category
+    where status = #{status}
+  </select>
+</mapper>
